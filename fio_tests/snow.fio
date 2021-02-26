@@ -1,0 +1,87 @@
+# pvcreate /dev/nvme??n1
+
+ 
+
+# vgcreate vg_nvme /dev/nvme??n1
+
+ 
+
+# lvcreate –l 100%free –n lv0 –i 16 (8 per LQD4500) –I 128 vg_nvme
+
+ 
+
+# mkfs.xfs –K /dev/vg_nvme/lv0
+
+ 
+
+# mount /dev/vg_nvme/lv0 /<mount_point>
+
+ 
+
+Here’s their FIO test script:
+
+ 
+
+#!/bin/bash
+
+ 
+
+FIO="/usr/bin/fio"
+
+DIRECTORY="/glide"
+
+MIN_JOB=1
+
+MAX_JOB=21
+
+STEP=1
+
+ 
+
+rm -f ${DIRECTORY}/8k-rw70-qd16-j*
+
+ 
+
+for i in `seq ${MIN_JOB} ${STEP} ${MAX_JOB}`
+
+do
+
+ 
+
+${FIO} --name=8k-rw70-qd16-j${i} \
+
+     --readwrite=randrw \
+
+     --rwmixwrite=70 \
+
+     --bs=8k \
+
+     --invalidate=1 \
+
+     --end_fsync=0 \
+
+     --group_reporting \
+
+     --direct=1 \
+
+     --directory=${DIRECTORY} \
+
+     --size=4G \
+
+     --time_based \
+
+     --runtime=60 \
+
+     --ioengine=libaio \
+
+     --numjobs=${i} \
+
+     --iodepth=16 \
+
+     --norandommap \
+
+     --randrepeat=0 \
+
+     --thread
+
+done

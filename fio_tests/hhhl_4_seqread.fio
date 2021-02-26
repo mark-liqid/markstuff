@@ -1,0 +1,112 @@
+[global]
+
+
+# bs= blocksize for test. Common sizes are 4k, 64k,128k,256k, 512k, 1M
+
+bs=512k
+
+# iodepth = queue depth. Common depths are 32, 64, 126, 256, 512
+iodepth=32
+
+# do not change direct value.
+direct=1
+
+# do not change ioengine
+ioengine=libaio
+
+# do not change randrepeat, this gives validation to test and makes sure you're not just writing on m.2 DRAM buffer stored data.
+randrepeat=1
+
+# reports all jobs into the same output. No need to change unless you think there's a single m.2 that's underperforming.
+group_reporting=1
+
+# sets the jobs to run as a time based run. Do not change.
+time_based
+
+# runtime is how long the test will run in seconds.
+runtime=120
+
+# filesize sets the size of the test file plot.
+filesize=10G
+
+# cpus_allowed_policy changes how the threads are locked. This can be changed to shared or split. Split dedicates one thread to one job
+# shared will allow more than one job to run a thread. Tweak for performance.
+cpus_allowed_policy=shared
+
+# numjobs sets the amount of threads to run per job. ie. if numbjobs=2 than each job will run two tests on the m.2. Change value to see where performance is the best. 
+numjobs=2
+
+# do not change invalidate. If set to 0 your test will not be valid.
+invalidate=1
+
+# ramp_time sets the amount of time to warm up the drives. Longer ramp times will fill the write buffer so you are able to log data for sustained writes only.
+ramp_time=10
+
+# How to use this job file:
+# Job structure is broken down into four values, job number defined as [job$], job type as defined by rw=$$, 
+# target for test is defined by filename=/dev/nvme$n$ and the name of the test as defined by name=$$=$$$.
+
+
+
+# Remove comment to switch test mode.
+# write = seq write
+# read = seq read
+# rw = seq read and write
+# randread random reads
+# randwrite = random writes
+# randrw = random reads and writes
+# trimwrite = before writing the block will be trimmed and then written. Probably won't ever be used.
+
+
+[job1]
+
+
+rw=read
+# rw=write
+# rw=rw
+# rw=randread
+# rw=randwrite
+# rw=randrw
+# rw=trimwrite
+
+filename=/dev/nvme0n1
+name=raw=test
+
+[job2]
+
+rw=read
+# rw=write
+# rw=rw
+# rw=randread
+# rw=randwrite
+# rw=randrw
+# rw=trimwrite
+
+filename=/dev/nvme1n1
+name=raw=test
+
+[job3]
+
+rw=read
+# rw=write
+# rw=rw
+# rw=randread
+# rw=randwrite
+# rw=randrw
+# rw=trimwrite
+
+filename=/dev/nvme2n1
+name=raw=test
+
+[job4]
+
+rw=read
+# rw=write
+# rw=rw
+# rw=randread
+# rw=randwrite
+# rw=randrw
+# rw=trimwrite
+
+filename=/dev/nvme3n1
+name=raw=test

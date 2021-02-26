@@ -1,0 +1,48 @@
+THREAD0: (g=0): rw=read, bs=(R) 128KiB-128KiB, (W) 128KiB-128KiB, (T) 128KiB-128KiB, ioengine=libaio, iodepth=32
+...
+THREAD1: (g=0): rw=read, bs=(R) 128KiB-128KiB, (W) 128KiB-128KiB, (T) 128KiB-128KiB, ioengine=libaio, iodepth=32
+...
+THREAD2: (g=0): rw=read, bs=(R) 128KiB-128KiB, (W) 128KiB-128KiB, (T) 128KiB-128KiB, ioengine=libaio, iodepth=32
+...
+THREAD3: (g=0): rw=read, bs=(R) 128KiB-128KiB, (W) 128KiB-128KiB, (T) 128KiB-128KiB, ioengine=libaio, iodepth=32
+...
+THREAD4: (g=0): rw=read, bs=(R) 128KiB-128KiB, (W) 128KiB-128KiB, (T) 128KiB-128KiB, ioengine=libaio, iodepth=32
+...
+THREAD5: (g=0): rw=read, bs=(R) 128KiB-128KiB, (W) 128KiB-128KiB, (T) 128KiB-128KiB, ioengine=libaio, iodepth=32
+...
+THREAD6: (g=0): rw=read, bs=(R) 128KiB-128KiB, (W) 128KiB-128KiB, (T) 128KiB-128KiB, ioengine=libaio, iodepth=32
+...
+THREAD7: (g=0): rw=read, bs=(R) 128KiB-128KiB, (W) 128KiB-128KiB, (T) 128KiB-128KiB, ioengine=libaio, iodepth=32
+...
+fio-3.15
+Starting 16 processes
+THREAD1: Laying out IO file (1 file / 1600MiB)
+THREAD1: Laying out IO file (1 file / 1600MiB)
+THREAD4: Laying out IO file (1 file / 1600MiB)
+fio: pid=4468, err=22/file:filesetup.c:701, func=open(/dev/nvnme3n1), error=Invalid argument
+
+THREAD0: (groupid=0, jobs=16): err=21 (file:filesetup.c:138, func=unlink, error=Is a directory): pid=4462: Fri Aug 16 15:03:39 2019
+  Description  : [12C24T]
+  read: IOPS=14.0k, BW=1750MiB/s (1835MB/s)(1792KiB/1msec)
+    clat percentiles (nsec):
+     |  1.00th=[    0],  5.00th=[    0], 10.00th=[    0], 20.00th=[    0],
+     | 30.00th=[    0], 40.00th=[    0], 50.00th=[    0], 60.00th=[    0],
+     | 70.00th=[    0], 80.00th=[    0], 90.00th=[    0], 95.00th=[    0],
+     | 99.00th=[    0], 99.50th=[    0], 99.90th=[    0], 99.95th=[    0],
+     | 99.99th=[    0]
+  cpu          : usr=0.00%, sys=0.00%, ctx=11, majf=0, minf=523
+  IO depths    : 1=50.0%, 2=21.4%, 4=28.6%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=85.7%, 8=14.3%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=14,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+
+Run status group 0 (all jobs):
+   READ: bw=1750MiB/s (1835MB/s), 1750MiB/s-1750MiB/s (1835MB/s-1835MB/s), io=1792KiB (1835kB), run=1-1msec
+
+Disk stats (read/write):
+  nvme0n1: ios=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%
+  nvme1n1: ios=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%
+  nvme2n1: ios=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%
+  nvme4n1: ios=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%
+  nvme6n1: ios=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%
+  nvme7n1: ios=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%

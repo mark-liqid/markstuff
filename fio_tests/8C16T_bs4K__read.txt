@@ -1,0 +1,50 @@
+THREAD0: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=32
+...
+THREAD1: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=32
+...
+THREAD2: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=32
+...
+THREAD3: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=32
+...
+THREAD4: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=32
+...
+THREAD5: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=32
+...
+THREAD6: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=32
+...
+THREAD7: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=32
+...
+fio-3.15
+Starting 16 processes
+THREAD1: Laying out IO file (1 file / 1600MiB)
+THREAD1: Laying out IO file (1 file / 1600MiB)
+
+fio: terminating on signal 2
+
+THREAD0: (groupid=0, jobs=16): err=21 (file:filesetup.c:138, func=unlink, error=Is a directory): pid=6202: Fri Aug 30 11:00:53 2019
+  Description  : [8C16T]
+  read: IOPS=2332k, BW=9110MiB/s (9553MB/s)(50.9GiB/5725msec)
+    clat percentiles (nsec):
+     |  1.00th=[    0],  5.00th=[    0], 10.00th=[    0], 20.00th=[    0],
+     | 30.00th=[    0], 40.00th=[    0], 50.00th=[    0], 60.00th=[    0],
+     | 70.00th=[    0], 80.00th=[    0], 90.00th=[    0], 95.00th=[    0],
+     | 99.00th=[    0], 99.50th=[    0], 99.90th=[    0], 99.95th=[    0],
+     | 99.99th=[    0]
+  cpu          : usr=7.96%, sys=24.34%, ctx=271470, majf=0, minf=544
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=100.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.1%, 64=0.0%, >=64=0.0%
+     issued rwts: total=13351732,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
+
+Run status group 0 (all jobs):
+   READ: bw=9110MiB/s (9553MB/s), 9110MiB/s-9110MiB/s (9553MB/s-9553MB/s), io=50.9GiB (54.7GB), run=5725-5725msec
+
+Disk stats (read/write):
+  nvme0n1: ios=2102348/0, merge=0/0, ticks=45894/0, in_queue=847, util=98.30%
+  nvme1n1: ios=1810151/0, merge=0/0, ticks=160759/0, in_queue=133, util=98.22%
+  nvme2n1: ios=1842165/0, merge=0/0, ticks=149369/0, in_queue=290, util=97.96%
+  nvme3n1: ios=1835432/0, merge=0/0, ticks=141519/0, in_queue=184, util=98.10%
+  nvme4n1: ios=1829659/0, merge=0/0, ticks=144452/0, in_queue=210, util=98.18%
+  nvme6n1: ios=1834499/0, merge=0/0, ticks=151800/0, in_queue=350, util=98.39%
+  nvme7n1: ios=1840032/0, merge=0/0, ticks=156312/0, in_queue=344, util=98.60%
