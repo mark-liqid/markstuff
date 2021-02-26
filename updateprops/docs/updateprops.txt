@@ -1,0 +1,27 @@
+RUN TWO DIFFERENT WAYS
+
+---------------------------------------------------------------------------------
+
+WITHOUT OPTIONS
+
+"python3 updateprops.py"
+
+you will be asked for:
+- location of new war file
+- new ip address
+- security (on/off)
+- environment (dev/prod)
+- p2p button visible in UI (on/off)
+
+---------------------------------------------------------------------------------
+
+WITH OPTIONS
+
+"python3 updateprops.py -war /tmp/liqidui.war -ip 192.168.1.11 -sec off -env prod -p2p off"
+
+REQUIRED OPTIONS
+-war => location of new .war file
+-ip => new ip address
+-sec => on/off
+-evn => prod/dev
+-p2p -> on/off

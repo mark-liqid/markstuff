@@ -1,0 +1,30 @@
+
+-- installation information and system setup
+http://docs.python-guide.org/en/latest/starting/install3/osx/
+http://programwithus.com/learn-to-code/install-python3-mac/
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew install python3
+
+python3 -m ensurepip --default-pip
+pip3 install --upgrade pip
+sudo pip3 install unittest2
+pip3 install nose2
+
+
+-- to run all tests
+python3 -m unittest discover tests/
+nose2 # preferred method
+
+
+
+-- some good python information
+https://stackoverflow.com/questions/136097/what-is-the-difference-between-staticmethod-and-classmethod-in-python
+https://stackoverflow.com/questions/13646245/is-it-possible-to-make-abstract-classes-in-python
+http://docs.python-guide.org/en/latest/writing/structure/#regarding-django-applications
+https://docs.python.org/3/tutorial/modules.html?highlight=module
+
+
+
+if we need to use src/
+# sys.path.insert(0, "src/")
+
