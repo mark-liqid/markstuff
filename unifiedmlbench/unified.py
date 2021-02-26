@@ -64,10 +64,11 @@ if install_type==1 or 3:
     os.system('wget https://github.com/tensorflow/benchmarks/archive/master.zip')
     os.system('unzip master.zip')
     print('Complete, to run the container : sudo docker run --gpus all -it --rm -v benchmarks-master/:/workspace nvcr.io/nvidia/tensorflow:20.12-tf2-py3')
-    print('A sample commandline for tf_cnn_benchmark will be created in benchmark_master')
-    pass
+    print("You will find an example command line for the NVIDIA container in a file that's been created called nvidiatf")
+    os.system("echo python tf_cnn_benchmarks.py --data_format=NCHW --batch_size=256 --num_batches=100 --model=resnet50 --optimizer=momentum --variable_update=replicated --all_reduce_spec=nccl --nodistortions --gradient_repacking=2 --datasets_use_prefetch=True --per_gpu_thread_count=2 --loss_type_to_report=base_loss --compute_lr_on_cpu=True --single_l2_loss_op=True --xla_compile=True --local_parameter_device=gpu --num_gpus=1 --display_every=10 | tee nvidiatf")
 
-#if the user wants ROCM or both...
+
+#ROCM...
 if install_type== 2 or 3:
     print('Installing ROCM DKMS and pulling newest ROCM container for TF....')
     os.system('apt update')
@@ -99,5 +100,9 @@ if install_type== 2 or 3:
     os.system("echo alias drun='sudo docker run -it --network=host --device=/dev/kfd --device=/dev/dri --ipc=host --shm-size 16G --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v $HOME/dockerx:/dockerx' > rocmlaunch")
     print('A file has been created called rocmlaunch, copy and paste this command into your terminal, then run drun rocm/tensorflow:latest')
 
+
+if install_type==3:
+    print("You will find an example command line for the NVIDIA container in a file that's been created called nvidiatf")
+    os.system("echo python tf_cnn_benchmarks.py --data_format=NCHW --batch_size=256 --num_batches=100 --model=resnet50 --optimizer=momentum --variable_update=replicated --all_reduce_spec=nccl --nodistortions --gradient_repacking=2 --datasets_use_prefetch=True --per_gpu_thread_count=2 --loss_type_to_report=base_loss --compute_lr_on_cpu=True --single_l2_loss_op=True --xla_compile=True --local_parameter_device=gpu --num_gpus=1 --display_every=10 | tee nvidiatf")
 
 
