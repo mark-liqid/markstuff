@@ -1,2 +1,0 @@
-class LiqidError(Exception):
-    pass
