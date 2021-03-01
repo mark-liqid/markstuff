@@ -31,7 +31,7 @@ if install_type==1 or 3:
     print('Installing NVIDIA CUDA and NVIDIA Docker2')
     #check for nouveau and blacklist it
     print('Checking for Nouveau blacklist and blacklisting if not already...')
-    if os.path.lexists('/etc/modprob.d/blacklist.conf') == False :
+    if os.path.lexists('/etc/modprobe.d/blacklist.conf') == False :
         print('Nouveau is not blacklisted, I can blacklist it for you. If it is already blacklisted skip.')
         cont=str(raw_input ('Continue? y/n '))
         if cont=="y":
