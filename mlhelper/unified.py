@@ -1,6 +1,6 @@
 import os
 import sys
-
+#monolithic script to install deps and software to run TF Resnet for tests. Works for both CUDA and ROCM. Uses docker containers.
 #get you some r00t
 euid = os.geteuid()
 if euid != 0:
@@ -101,7 +101,7 @@ if install_type== 2 or 3:
     print('A file has been created called rocmlaunch, copy and paste this command into your terminal, then run drun rocm/tensorflow:latest')
 
 
-if install_type==3:
+if install_type==3 or 1:
     print("You will find an example command line for the NVIDIA container in a file that's been created called nvidiatf")
     os.system("echo python tf_cnn_benchmarks.py --data_format=NCHW --batch_size=256 --num_batches=100 --model=resnet50 --optimizer=momentum --variable_update=replicated --all_reduce_spec=nccl --nodistortions --gradient_repacking=2 --datasets_use_prefetch=True --per_gpu_thread_count=2 --loss_type_to_report=base_loss --compute_lr_on_cpu=True --single_l2_loss_op=True --xla_compile=True --local_parameter_device=gpu --num_gpus=1 --display_every=10 | tee nvidiatf")
 
