@@ -43,8 +43,8 @@ os.system('apt update && apt install docker-ce docker-ce-cli containerd.io -y')
 print('Docker.ce Installed, now installing NVIDIA Docker 2')
 
 
-os.system('curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - distribution=$(. /etc/os-release;echo $ID$VERSION_ID)')
-os.system("curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list |  tee /etc/apt/sources.list.d/nvidia-docker.list")
+os.system('curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | apt-key add -')
+os.system("curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu20.04/nvidia-docker.list > /etc/apt/sources.list.d/nvidia-docker.list)
 os.system('apt update && apt install nvidia-docker2 -y')
 os.system('pkill -SIGHUP dockerd')
 
