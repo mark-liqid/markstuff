@@ -49,12 +49,9 @@ os.system('apt update && apt install nvidia-docker2 -y')
 os.system('pkill -SIGHUP dockerd')
 
 
-print('NVIDIA Docker 2 installed, downloading tf_cnn_benchmark...')
-os.system('wget https://github.com/tensorflow/benchmarks/archive/master.zip')
-os.system('unzip master.zip')
-
-
 print('Starting NVIDIA TF Container Download....')
 os.system('docker pull nvcr.io/nvidia/tensorflow:20.12-tf2-py3')
 
-print('Complete, to run the container : sudo docker run --gpus all -it --rm -v benchmarks-master/:/workspace nvcr.io/nvidia/tensorflow:20.12-tf2-py3')
+print('Complete, to run the container : sudo docker run --gpus all -it --rm -v nvcr.io/nvidia/tensorflow:20.12-tf2-py3')
+print('Creating runcontainer.sh with that command....')
+os.system('echo sudo docker run --gpus all -it --rm nvcr.io/nvidia/tensorflow:20.12-tf2-py3 > runcontainer.sh')
