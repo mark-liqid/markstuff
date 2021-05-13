@@ -22,15 +22,6 @@ else:
     if nouveau_status == " ":
         pass
 
-print('Starting NVIDIA driver installation...')
-
-os.system("wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin")
-os.system('mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600')
-os.system('apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub')
-os.system('add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"')
-os.system('apt update && apt install nvidia-cuda-toolkit -y')
-
-
 print('Finished NVIDIA Driver and CUDA Toolkit, starting Docker-CE installation')
 
 
