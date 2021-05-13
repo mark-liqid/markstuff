@@ -22,7 +22,7 @@ else:
     if nouveau_status == " ":
         pass
 
-print('Finished NVIDIA Driver and CUDA Toolkit, starting Docker-CE installation')
+print('Docker-CE installation')
 
 
 os.system('apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y')
